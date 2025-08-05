@@ -6,7 +6,7 @@
     - Store each value and operator entered by user in a seperate backend logic inside vairables 
        (forget about div display, it is just a display for the user, not for us programmers)
 */
-let a, b, choosen;
+let a, b, op;
 
 function add(a, b){
     return a+b;
