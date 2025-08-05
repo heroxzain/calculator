@@ -1,4 +1,3 @@
-
 function add(a, b){
     return Number(a)+Number(b);
 }
@@ -17,6 +16,15 @@ function divide(a, b){
 
 let a, op, b, result;
 
+function operate(op, a, b) {
+    switch(op){
+        case "+": result = add(a,b); break;
+        case "-": result = subtract(a,b); break;
+        case "*": result = multiply(a,b); break;
+        case "/": result = divide(a,b); break;
+    }    
+}
+
 
 
 // //Goal: 
@@ -27,7 +35,6 @@ let a, op, b, result;
 //     - Store each value and operator entered by user in a seperate backend logic inside vairables 
 //        (forget about div display, it is just a display for the user, not for us programmers)
 // */
-// let a, b, op;
 
 
 // function operate(operator, a, b){
