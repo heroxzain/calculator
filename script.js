@@ -15,7 +15,7 @@ function divide(a, b){
     return Number(a)/Number(b);
 }
 
-// let a, op, b;
+let a, op, b, result;
 
 
 
