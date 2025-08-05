@@ -26,14 +26,23 @@ function operate(op, a, b) {
 }
 
 let numbers = document.querySelectorAll(".numbers > *");
+let display = document.querySelector(".display");
 
 numbers.forEach(number => {
     number.addEventListener("click", (e) => {
         a += e.target.id;
+        printall(e.target.id);
     });
 });
 
+function print(text){
+    display.textContent = text;
+}
 
+function printall(text){
+    if(display.textContent==="0") print(text);
+    else display.textContent += text;
+}
 
 // let numbers = document.querySelectorAll(".numbers > *");
 // let display = document.querySelector(".display");
