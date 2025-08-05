@@ -14,7 +14,7 @@ function divide(a, b){
     return Number(a)/Number(b);
 }
 
-let a, op, b, result;
+let a = 0, op, b, result;
 
 function operate(op, a, b) {
     switch(op){
@@ -24,6 +24,14 @@ function operate(op, a, b) {
         case "/": result = divide(a,b); break;
     }    
 }
+
+let numbers = document.querySelectorAll(".numbers > *");
+
+numbers.forEach(number => {
+    number.addEventListener("click", (e) => {
+        a += e.target.id;
+    });
+});
 
 
 
