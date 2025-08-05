@@ -1,115 +1,115 @@
+//Goal: 
+/*
+    - The div with class .display, will just be a display for the user
+    - For the backend logic, the actual variables will be used 
+    - DON'T TAKE VALUES OF VARIABLES FROM THE DISPLAY DIV
+    - Store each value and operator entered by user in a seperate backend logic inside vairables 
+       (forget about div display, it is just a display for the user, not for us programmers)
+*/
+let a, b, choosen;
+
 function add(a, b){
-    return Number(a)+Number(b);
+    return a+b;
 }
 
 function subtract(a, b){
-    return Number(a)-Number(b);
+    return a-b;
 }
 
 function multiply(a, b){
-    return Number(a)*Number(b);
+    return a*b;
 }
 
 function divide(a, b){
-    return Number(a)/Number(b);
+    return a/b;
 }
 
-let a = 0, op, b, result;
-
-function operate(op, a, b) {
-    switch(op){
-        case "+": result = add(a,b); break;
-        case "-": result = subtract(a,b); break;
-        case "*": result = multiply(a,b); break;
-        case "/": result = divide(a,b); break;
-    }    
+function operate(operator, a, b){
+    switch(operator){
+        case "+": return add(a, b); break;
+        case "-": return subtract(a, b); break;
+        case "*": return multiply(a, b); break;
+        case "/": return divide(a, b); break;
+        default : display.textContent = "Something went wrong";
+    }
 }
 
 let numbers = document.querySelectorAll(".numbers > *");
 let display = document.querySelector(".display");
+let operators = document.querySelectorAll(".operators > *");
+let equal = document.querySelector(".equal");
+let clear = document.querySelector(".clear");
+let ac = document.querySelector(".allClear");
 
 numbers.forEach(number => {
-    number.addEventListener("click", (e) => {
-        a += e.target.id;
-        printall(e.target.id);
+    number.addEventListener("click", (e)=> {
+        (display.textContent == 0) ? 
+        display.textContent = e.target.id :
+        display.textContent += e.target.id;
     });
 });
 
-function print(text){
-    display.textContent = text;
-}
+operators.forEach(operator => {
+    operator.addEventListener("click", (e) => {
+        op = e.target.id;
+        a = Number(display.textContent);
+        display.textContent += op;
+    });
+}); 
+/* Old Logic of the above function:
+        op = e.target.id;
+        display.textContent += op;
+        a = display.textContent;
 
-function printall(text){
-    if(display.textContent==="0") print(text);
-    else display.textContent += text;
-}
+        a = a.slice(0, a.indexOf(op));
+        b = display.textContent;
+        b = b.slice(b.indexOf(op)+1);
+        if(b == "") {b=0;} 
+        else {b = b.slice(0, b.indexOf(op));}
+        a = Number(a);
+        b = Number(b);
+        display.textContent = operate(op, a, b) + op;
+*/
 
-// let numbers = document.querySelectorAll(".numbers > *");
-// let display = document.querySelector(".display");
-// let operators = document.querySelectorAll(".operators > *");
-// let equal = document.querySelector(".equal");
-// let clear = document.querySelector(".clear");
-// let ac = document.querySelector(".allClear");
+equal.addEventListener("click", (e) => {
+    b = display.textContent;
+    b = Number(b.slice((b.indexOf(op)+1)));
+    display.textContent = operate(op, a, b);
+});
 
+ac.addEventListener("click", (e) => display.textContent = 0);
+clear.addEventListener("click", (e) => {
+    let str = display.textContent;
+    display.textContent = str.substring(0, str.length-1);
+    if(display.textContent == "") display.textContent = 0;
+});
+
+
+/*************************************************************************/
+// New Logic
 // numbers.forEach(number => {
-//     number.addEventListener("click", (e)=> {
-//         (display.textContent == 0) ? 
-//         display.textContent = e.target.id :
-//         display.textContent += e.target.id;
+//     number.addEventListener("click", (e) => {
+//         a += e.target.id;
+//         printall(e.target.id);
 //     });
 // });
 
 // operators.forEach(operator => {
 //     operator.addEventListener("click", (e) => {
 //         op = e.target.id;
-//         a = Number(display.textContent);
-//         display.textContent += op;
+//         temp = b;
+//         b = Number(a);
+//         a = 0;
+//         operate(op, temp, b);
+//         print(result + op);        
 //     });
-// }); 
-// /* Old Logic of the above function:
-//         op = e.target.id;
-//         display.textContent += op;
-//         a = display.textContent;
-
-//         a = a.slice(0, a.indexOf(op));
-//         b = display.textContent;
-//         b = b.slice(b.indexOf(op)+1);
-//         if(b == "") {b=0;} 
-//         else {b = b.slice(0, b.indexOf(op));}
-//         a = Number(a);
-//         b = Number(b);
-//         display.textContent = operate(op, a, b) + op;
-// */
-
-// equal.addEventListener("click", (e) => {
-//     b = display.textContent;
-//     b = Number(b.slice((b.indexOf(op)+1)));
-//     display.textContent = operate(op, a, b);
 // });
 
-// ac.addEventListener("click", (e) => display.textContent = 0);
-// clear.addEventListener("click", (e) => {
-//     let str = display.textContent;
-//     display.textContent = str.substring(0, str.length-1);
-//     if(display.textContent == "") display.textContent = 0;
-// });
+// function print(text){
+//     display.textContent = text;
+// }
 
-// //Goal: 
-// /*
-//     - The div with class .display, will just be a display for the user
-//     - For the backend logic, the actual variables will be used 
-//     - DON'T TAKE VALUES OF VARIABLES FROM THE DISPLAY DIV
-//     - Store each value and operator entered by user in a seperate backend logic inside vairables 
-//        (forget about div display, it is just a display for the user, not for us programmers)
-// */
-
-
-// function operate(operator, a, b){
-//     switch(operator){
-//         case "+": return add(a, b); break;
-//         case "-": return subtract(a, b); break;
-//         case "*": return multiply(a, b); break;
-//         case "/": return divide(a, b); break;
-//         default : display.textContent = "Something went wrong";
-//     }
+// function printall(text){
+//     if(display.textContent==="0") print(text);
+//     else display.textContent += text;
 // }
