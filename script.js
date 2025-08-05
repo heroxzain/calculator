@@ -1,4 +1,23 @@
 
+function add(a, b){
+    return Number(a)+Number(b);
+}
+
+function subtract(a, b){
+    return Number(a)-Number(b);
+}
+
+function multiply(a, b){
+    return Number(a)*Number(b);
+}
+
+function divide(a, b){
+    return Number(a)/Number(b);
+}
+
+// let a, op, b;
+
+
 
 // //Goal: 
 // /*
@@ -10,21 +29,6 @@
 // */
 // let a, b, op;
 
-// function add(a, b){
-//     return a+b;
-// }
-
-// function subtract(a, b){
-//     return a-b;
-// }
-
-// function multiply(a, b){
-//     return a*b;
-// }
-
-// function divide(a, b){
-//     return a/b;
-// }
 
 // function operate(operator, a, b){
 //     switch(operator){
