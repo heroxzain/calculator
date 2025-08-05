@@ -6,7 +6,7 @@
     - Store each value and operator entered by user in a seperate backend logic inside vairables 
        (forget about div display, it is just a display for the user, not for us programmers)
 */
-let a, b, op;
+let a=0, b, op, result;
 
 function add(a, b){
     return a+b;
@@ -77,11 +77,15 @@ equal.addEventListener("click", (e) => {
     display.textContent = operate(op, a, b);
 });
 
-ac.addEventListener("click", (e) => display.textContent = 0);
+ac.addEventListener("click", (e) => {
+    display.textContent = 0
+});
 clear.addEventListener("click", (e) => {
     let str = display.textContent;
     display.textContent = str.substring(0, str.length-1);
-    if(display.textContent == "") display.textContent = 0;
+    console.log(display.textContent.length);
+    if(display.textContent == "") {
+        display.textContent = 0; }
 });
 
 
