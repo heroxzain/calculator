@@ -11,7 +11,6 @@ let a = 0, b = 0, operator;
 let screen = document.querySelector(".screen");
 let digits = document.querySelectorAll(".digit");
 let operators = document.querySelectorAll(".operator");
-// let equal = document.querySelector(".equal");
 let cross = document.querySelector("#cross");
 let clear = document.querySelector("#clear");
 let dot = document.querySelector(".dot");
@@ -45,6 +44,25 @@ digits.forEach(button => {
 
 operators.forEach(button => {
     button.addEventListener("click", (e) => {
-        operator = e.target.id;
+        if (e.target.id === "=") {
+            if (b !== 0) {
+                result = operate(+a, +b, operator);
+                screen.textContent = `${+result}`;
+                a = b = result = 0;
+                operator = undefined;
+            }
+        } else {
+            if (operator === undefined) operator = e.target.id;
+            if (b === 0) {
+                screen.textContent = `${+a} ${operator}`;
+            } else {
+                result = operate(+a, +b, operator);
+                a = result;
+                b = result = 0;
+                screen.textContent = `${+a} ${operator}`;
+            }
+            operator = e.target.id;
+        }
     });
 });
+
