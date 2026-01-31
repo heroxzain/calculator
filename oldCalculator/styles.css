@@ -1,0 +1,57 @@
+* {
+    border: 2px solid red;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.container {
+    border-radius: 5px;
+    width: 250px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.container * {
+    border-radius: 3px;
+}
+
+.display {
+    text-align: end;
+    margin: 10px;
+    padding: 10px;
+}
+
+.buttons {
+    margin: 10px;
+    margin-top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.clearDisplays {
+    width: 100%;
+}
+
+div.pad, div.operators {
+    flex: auto;
+}
+
+div.pad {
+    width: 80%;
+    display: flex;
+}
+
+div.special {
+    display: inline;
+}
+
+div.operators {
+    width: 20%;
+}
