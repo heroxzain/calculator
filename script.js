@@ -9,7 +9,12 @@ let a, b, operator;
 
 // getting dom elements
 let screen = document.querySelector(".screen");
-
+let digits = document.querySelectorAll(".digit");
+let operators = document.querySelectorAll(".operator");
+let equal = document.querySelector(".equal");
+let cross = document.querySelector("#cross");
+let clear = document.querySelector("#clear");
+let dot = document.querySelector(".dot");
 
 // calculate the result
 function operate(a, b, operator) {
