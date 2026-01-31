@@ -46,7 +46,7 @@ operators.forEach(button => {
     button.addEventListener("click", (e) => {
         if (e.target.id === "=") {
             if (b !== 0) {
-                result = operate(+a, +b, operator);
+                result = operate(+a, +b, operator).toFixed(2);
                 screen.textContent = `${+result}`;
                 a = b = result = 0;
                 operator = undefined;
@@ -56,7 +56,7 @@ operators.forEach(button => {
             if (b === 0) {
                 screen.textContent = `${+a} ${operator}`;
             } else {
-                result = operate(+a, +b, operator);
+                result = operate(+a, +b, operator).toFixed(2);
                 a = result;
                 b = result = 0;
                 screen.textContent = `${+a} ${operator}`;
