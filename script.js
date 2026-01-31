@@ -2,7 +2,13 @@
 let add = (a, b) => a + b;
 let subtract = (a, b) => a - b;
 let multiply = (a, b) => a * b;
-let divide = (a, b) => a / b; // (b===0 ? 1 : b);
+let divide = (a, b) => {
+    if (b === 0) {
+        alert("Enter a valid expression");
+        return 0;
+    }
+    return a / b;
+}
 let modulus = (a, b) => a % b;
 let result = 0;
 let a = 0, b = 0, operator;
@@ -54,15 +60,35 @@ operators.forEach(button => {
         } else {
             if (operator === undefined) operator = e.target.id;
             if (b === 0) {
-                screen.textContent = `${+a} ${operator}`;
+                screen.textContent = `${+a} ${e.target.id}`;
             } else {
                 result = operate(+a, +b, operator).toFixed(2);
                 a = result;
                 b = result = 0;
-                screen.textContent = `${+a} ${operator}`;
+                screen.textContent = `${+a} ${e.target.id}`;
             }
             operator = e.target.id;
         }
     });
 });
 
+clear.addEventListener("click", () => {
+    a = b = result = 0;
+    screen.textContent = "0";
+    operator = undefined;
+});
+
+cross.addEventListener("click", () => {
+    if (operator === undefined) {
+        screen.textContent = screen.textContent.split("").slice(0, -1).join("");
+        a = a.split("").slice(0, -1).join("");
+    } else {
+        if (b === 0) {
+            screen.textContent = screen.textContent.split("").slice(0, -1).join("");
+            operator = undefined;
+        } else {
+            screen.textContent = screen.textContent.split("").slice(0, -1).join("");
+            b = b.split("").slice(0, -1).join("");
+        }
+    }
+});
