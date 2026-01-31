@@ -43,3 +43,8 @@ digits.forEach(button => {
     });
 });
 
+operators.forEach(button => {
+    button.addEventListener("click", (e) => {
+        operator = e.target.id;
+    });
+});
