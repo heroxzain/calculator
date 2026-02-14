@@ -72,23 +72,30 @@ operators.forEach(button => {
     });
 });
 
-clear.addEventListener("click", () => {
+function refresh() {
     a = b = result = 0;
     screen.textContent = "0";
     operator = undefined;
-});
+}
+
+clear.addEventListener("click", refresh);
+
+function erase(m) {
+    screen.textContent = screen.textContent.split("").slice(0, m).join("");
+}
 
 cross.addEventListener("click", () => {
-    if (operator === undefined) {
-        screen.textContent = screen.textContent.split("").slice(0, -1).join("");
+    if (a == 0)
+        refresh();
+    else if (operator === undefined) { // a!=0
         a = a.split("").slice(0, -1).join("");
-    } else {
-        if (b === 0) {
-            screen.textContent = screen.textContent.split("").slice(0, -1).join("");
-            operator = undefined;
-        } else {
-            screen.textContent = screen.textContent.split("").slice(0, -1).join("");
-            b = b.split("").slice(0, -1).join("");
-        }
+        if (a == 0) refresh();
+        else erase(-1);
+    } else if (b == 0) { // op == defined
+        operator = undefined;
+        erase(-2);
+    } else { // b != 0
+        b = b.split("").slice(0, -1).join("");
+        erase(-1);
     }
 });
